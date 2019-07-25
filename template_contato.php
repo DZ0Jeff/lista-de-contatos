@@ -21,12 +21,12 @@
 				<?php echo $contato['descricao']; ?>
 			</p>
 			<p>
-			<strong>Prazo:</strong>
-				<?php echo traduz_data_para_exibir($contato['nasc']); ?>
+			<strong>Data de nascimento: </strong>
+				<?php echo $validator->traduz_data_para_exibir($contato['nasc']); ?>
 			</p>
 			<p>
-			<strong>Prioridade:</strong>
-				<?php echo traduz_concluida($contato['concluida']); ?>
+			<strong>Amizade: </strong>
+				<?php echo $validator->traduz_concluida($contato['concluida']); ?>
 			</p>
 		<h2>Anexos</h2>
 		<!-- lista de anexos -->
@@ -54,7 +54,7 @@
 				<?php endforeach ?>
 			</table>
 		<?php else : ?>
-			<p>Não há anexos para essa tarefa.</p>
+			<p>Não há anexos para esse contato.</p>
 		<?php endif; ?>
 
 		<!-- formulário para um novo anexo -->

@@ -2,12 +2,14 @@
 
 session_start();
 
-include 'config.php';
-include "banco.php";
-include "ajudantes.php";
-include "classes/Contato.php";
+require_once 'config.php';
+require_once "banco.php";
+require_once "ajudantes.php";
+require_once "classes/Contato.php";
+require_once "classes/Helper.php";
 
 $contatos = new Contatos($conexao);
+$validator = new Helper();
 
 $exibir_tabela = true;
 
@@ -43,7 +45,7 @@ $tem_erros = false;
 		}
 
 		if (isset($_GET['nasc'])) {
-			$contato['nasc'] = traduz_data_para_banco($_GET['nasc']);
+			$contato['nasc'] = $validator->traduz_data_para_banco($_GET['nasc']);
 		} 
 		else {
 			$contato['nasc'] = '';

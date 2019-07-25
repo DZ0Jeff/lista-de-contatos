@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Gerenciador de Contatos</title>
-		<link rel="stylesheet" href="css/estilo.css" type="text/css" />
+		<link rel="stylesheet" href="css/main.css" type="text/css" />
 	</head>
 	<body>
 		<h1>Gerenciador de Contatos</h1>

@@ -3,13 +3,15 @@
 	include 'banco.php';
 	include 'ajudantes.php';
 	include 'classes/Contato.php';
+	require_once 'classes/Helper.php';
 
 	$contatos = new Contatos($conexao);
+	$validator = new Helper();
 
 	$tem_erros = false;
 	$erros_validacao = array();
 
-	if (tem_post()) {
+	if ($validator->tem_post()) {
 		// upload dos anexos
 		$contato_id = $_POST['contato_id'];
 
@@ -17,7 +19,7 @@
 			$tem_erros = true;
 			$erros_validacao['anexo'] = 'Insira uma imagem!';
 		} else {
-			if (tratar_anexo($_FILES['anexo'])) {
+			if ($validator->tratar_anexo($_FILES['anexo'])) {
 				$anexo = array();
 				$anexo['contato_id'] = $contato_id;
 				$anexo['nome'] = $_FILES['anexo']['name'];

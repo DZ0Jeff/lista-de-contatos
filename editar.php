@@ -26,7 +26,7 @@ $erros_validacao = array();
 		}
 
 		if(isset($_POST['telefone']) && strlen($_POST['telefone']) > 0) {
-			if (validar_fone($_POST['telefone'])) {
+			if ($validator->validar_fone($_POST['telefone'])) {
 				$contato['telefone'] = $_POST['telefone'];
 			}
 		
@@ -53,7 +53,7 @@ $erros_validacao = array();
 		if(isset($_POST['nasc']) && strlen($_POST['nasc']) > 0) {
 
 			if (validar_data($_POST['nasc'])) {
-				$contato['nasc'] = traduz_data_para_banco($_POST['nasc']);
+				$contato['nasc'] = $validator->traduz_data_para_banco($_POST['nasc']);
 			} 
 			else {
 				$tem_erros = true;

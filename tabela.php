@@ -25,10 +25,10 @@
 				<?php echo $contato['descricao']; ?> 
 			</td>
 			<td>
-				<?php echo traduz_data_para_exibir($contato['nasc']); ?> 
+				<?php echo $validator->traduz_data_para_exibir($contato['nasc']); ?> 
 			</td>
 			<td>
-				<?php echo traduz_concluida($contato['concluida']); ?> 
+				<?php echo $validator->traduz_concluida($contato['concluida']); ?> 
 			</td>
 			<td>
 				<a href="editar.php?id=<?php echo $contato['id']; ?> ">

@@ -1,7 +1,7 @@
 <?php
 
-	include 'config.php';
-	include "banco.php";
+	require_once 'config.php';
+	require_once "banco.php";
 	require_once "classes/Contato.php";
 
 	$contatos = new Contatos($conexao);

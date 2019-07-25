@@ -1,0 +1,93 @@
+@charset 'UTF-8';
+
+body {
+    font-family: Sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    margin: auto;
+    margin-bottom: 50px;
+    width: 70%;
+}
+
+h1 {
+    transition: 3s all;
+    text-align: center;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: rgb(37, 214, 37);
+}
+
+.erro {
+    color: #F44;
+}
+
+fieldset {
+    color: #ffffff;
+    border: 3px double rgba(49, 49, 49, 0.377);
+    color: #000;
+    margin: 10px;
+}
+
+legend {
+    color: #ffffff;
+}
+
+label {
+    color: #ffffff;
+    display: block;
+    margin: 0 0 10px 20px;
+}
+
+input[type=text],
+textarea {
+    background-color: #333;
+    min-width: 90%;
+    border: 1px solid #333;
+    color: rgb(255, 255, 255);
+    padding: 3px;
+    border-radius: 5px;
+    resize: none;
+}
+
+input[type=submit] {
+    float: right;
+    clear: both;
+}
+
+table {
+    width: 100%;
+    margin: 30px 0; 
+    transition: 3s all;
+}
+
+table th {
+    background-color: rgba(49, 49, 49, 0.377);
+    font-size: 18px;
+}
+
+table td {
+    border-bottom: 1px solid #333;
+    color: rgb(255, 253, 253);
+    text-align: center;
+}
+
+.subButton{
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 1em;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 1s background-color;
+}
+
+.subButton:hover {
+    background-color: rgb(30, 179, 30);
+}

@@ -2,19 +2,21 @@
 
 session_start();
 
-include 'config.php';
-include "banco.php";
-include "ajudantes.php";
-include "classes/Contato.php";
+require_once 'config.php';
+require_once "banco.php";
+require_once "ajudantes.php";
+require_once "classes/Contato.php";
+require_once "classes/Helper.php";
 
 $contatos = new Contatos($conexao);
+$validator = new Helper();
 
 $exibir_tabela = true;
 
 $tem_erros = false;
 $erros_validacao = array();
 
-	if (tem_post()) {
+	if ($validator->tem_post()) {
 		$contato = array();
 
 		if(isset($_POST['nome']) && strlen($_POST['nome']) > 0)
@@ -25,7 +27,7 @@ $erros_validacao = array();
 		}
 
 		if(isset($_POST['telefone']) && strlen($_POST['telefone']) > 0) {
-			if (validar_fone($_POST['telefone'])) {
+			if ($validator->validar_fone($_POST['telefone'])) {
 				$contato['telefone'] = $_POST['telefone'];
 			}
 		
@@ -52,8 +54,8 @@ $erros_validacao = array();
 
 		if(isset($_POST['nasc']) && strlen($_POST['nasc']) > 0) {
 
-			if (validar_data($_POST['nasc'])) {
-				$contato['nasc'] = traduz_data_para_banco($_POST['nasc']);
+			if ($validator->validar_data($_POST['nasc'])) {
+				$contato['nasc'] = $validator->traduz_data_para_banco($_POST['nasc']);
 			} 
 			else {
 				$tem_erros = true;
@@ -77,6 +79,9 @@ $erros_validacao = array();
 
 			header('Location: listadedados.php');
 			die();
+			
+		} else{
+			echo "<script> alert('Erro ao enviar! verifique os dados'); </script>";
 		}
 	}
 
@@ -94,7 +99,7 @@ $contato = array (
 	'descricao'	=> (isset($_POST['descricao'])) ? $_POST['descricao'] : '',
 
 	'nasc'		=> (isset($_POST['nasc'])) ? 
-	traduz_data_para_banco($_POST['nasc']) : '',
+	$validator->traduz_data_para_banco($_POST['nasc']) : '',
 
 	'concluida' => (isset($_POST['concluida'])) ? $_POST['concluida'] : ''
 );

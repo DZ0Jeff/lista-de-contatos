@@ -1,67 +1,88 @@
 <form method="POST">
-	<input type="hidden" name="id" 
-		value="<?php echo $contato['id']; ?>" />
+
+	<input 
+		type="hidden" name="id" 
+		value="<?php echo $contato['id']; ?>" 
+	/>
+
 	<fieldset>
 		<legend>Novo Contato:</legend>
 
 		<label>
-			Nome:
+			<p>Nome:</p>
 			<?php if ($tem_erros && isset($erros_validacao['nome'])) : ?>
 				<span class="erro">
 					<?php echo $erros_validacao['nome']; ?>
 				</span>
 			<?php endif ?>
-			<input type="text" name="nome"
-				value="<?php echo $contato['nome']; ?> " />
+
+			<input type="text" 
+				name="nome"
+				value="<?php echo $contato['nome']; ?> " 
+			/>
+
 		</label>
 
 		<label>
-			Telefone:
+			<p>Telefone:</p>
 			<?php if ($tem_erros && isset($erros_validacao['telefone'])) : ?>
 				<span class="erro">
 					<?php echo $erros_validacao['telefone']; ?>
 				</span>
 			<?php endif ?>
-		<input type="text" name="telefone" 
-			value="<?php echo $contato['telefone'] ?>" />
+
+			<input type="text" 
+				name="telefone" 
+				value="<?php echo $contato['telefone'] ?>" 
+			/>
+
 		</label>
 
 		<label>
-			E-mail:
+			<p>E-mail:</p>
 			<?php if ($tem_erros && isset($erros_validacao['email'])) : ?>
 				<span class="erro">
 					<?php echo $erros_validacao['email']; ?>
 				</span>
 			<?php endif ?>
-		<input type="text" name="email" value="<?php echo $contato['email'] ?>" />
+
+			<input type="text" 
+				name="email" 
+				value="<?php echo $contato['email'] ?>" 
+			/>
+
 		</label>
 
 		<label>
-			Descrição:
+			<p>Descrição:</p>
 			<textarea name="descricao">
 				<?php echo $contato['descricao']; ?>
 			</textarea>
 		</label>
 
 		<label>
-			Data de nascimento:
+			<p>Data de nascimento:</p>
 			<?php if ($tem_erros && isset($erros_validacao['nasc'])) : ?>
 				<span class="erro">
 					<?php echo $erros_validacao['nasc']; ?>
 				</span>
 			<?php endif ?>
-			<input type="text" name="nasc" value=
-			"<?php echo traduz_data_para_exibir($contato['nasc']); 
-				?>" />
+
+			<input type="text" 
+				name="nasc" 
+				value="<?php echo $validator->traduz_data_para_exibir($contato['nasc']); 
+			?>" />
+
 		</label>
 
 		<fieldset>
 			<legend>Favoritos:</legend>
 			<label>
 				Sim?
-				<input type="checkbox" name="concluida" value="1"
+				<input type="checkbox" 
+					name="concluida" value="1"
 					<?php echo ($contato['concluida'] == 1) ? 'checked' : ''; ?> 
-					/>
+				/>
 			</label>
 
 			<label>
@@ -71,7 +92,8 @@
 		</fieldset>
 
 		<br>
-			<input type="submit" value="<?php echo ($contato['id'] > 0)? 'Atualizar' : 'Cadastrar'; ?> " />
+			<input type="submit" class="subButton" value="<?php echo ($contato['id'] > 0)? 'Atualizar' : 'Cadastrar'; ?> " />
+
 		<nav>
 			<ul>
 				<li>
