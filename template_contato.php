@@ -2,7 +2,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Gerenciador de Contatos</title>
-		<link rel="stylesheet" href="css/estilo.css" type="text/css" />
+		<link rel="stylesheet" href="css/main.css" type="text/css" />
 	</head>
 	<body>
 		<h1>Contato: <?php echo $contato['nome']; ?> </h1>
@@ -59,7 +59,7 @@
 
 		<!-- formulário para um novo anexo -->
 		<form action="#" method="post" enctype="multipart/form-data" >
-			<fieldset>
+			<fieldset class="anexos">
 				<legend>Novo Anexo</legend>
 				<input type="hidden" name="contato_id" 
 					value="<?php echo $contato['id']; ?>">
@@ -74,7 +74,7 @@
 					<input type="file" name="anexo">
 				</label>
 
-				<input type="submit" name="Enviar">
+				<input type="submit" class="subButton" name="Enviar">
 			</fieldset>
 		</form>
 	</body>

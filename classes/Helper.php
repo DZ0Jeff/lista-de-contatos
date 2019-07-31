@@ -94,7 +94,7 @@
 
         function validar_fone($data)
         {
-            $padrão = '/^[0-9]{5}\-[0-9]{4}$/';
+            $padrão = '/^[0-9]{7}\-[0-9]{4}$/';
             $resultado = preg_match($padrão, $data);
 
             return $resultado;
@@ -116,6 +116,12 @@
             move_uploaded_file($anexo['tmp_name'], "anexos/{$anexo['name']}");
 
             return true;
+        }
+
+
+        function special_str($string)
+        {
+            echo htmlspecialchars($string);
         }
     }
 

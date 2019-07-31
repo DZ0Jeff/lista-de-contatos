@@ -6,15 +6,17 @@ include 'config.php';
 include "banco.php";
 include "ajudantes.php";
 require_once "classes/Contato.php";
+require_once "classes/Helper.php";
 
 $contatos = new Contatos($conexao);
+$validator = new Helper();
 
 $exibir_tabela = false;
 
 $tem_erros = false;
 $erros_validacao = array();
 
-	if (tem_post()) {
+	if ($validator->tem_post()) {
 		$contato = array();
 		$contato['id'] = $_POST['id'];
 
@@ -52,7 +54,7 @@ $erros_validacao = array();
 
 		if(isset($_POST['nasc']) && strlen($_POST['nasc']) > 0) {
 
-			if (validar_data($_POST['nasc'])) {
+			if ($validator->validar_data($_POST['nasc'])) {
 				$contato['nasc'] = $validator->traduz_data_para_banco($_POST['nasc']);
 			} 
 			else {
@@ -72,7 +74,7 @@ $erros_validacao = array();
 			$contatos->editar_contato($conexao, $contato);
 
 			if (isset($_POST['lembrete']) && $_POST['lembrete'] == '1') {
-				$anexos = buscar_anexos($conexao ,$contato['id']);
+				$anexos = $contatos->buscar_anexos($conexao ,$contato['id']);
 
 				enviar_email($contato, $anexos);
 			}
@@ -83,21 +85,11 @@ $erros_validacao = array();
 	}
 
 	$contato = $contatos->exibir_contato($conexao, $_GET['id']);
-
-		$contato['nome'] = (isset($_POST['nome'])) ?
-			$_POST['nome'] : $contato['nome'];
-
-		$contato['telefone'] = (isset($_POST['telefone'])) ?
-			$_POST['telefone'] : $contato['telefone'];
-
-		$contato['email'] = (isset($_POST['email'])) ?
-			$_POST['email'] : $contato['email'];
-
-		$contato['descricao'] = (isset($_POST['descricao'])) ?
-			$_POST['descricao'] : $contato['descricao'];
-
-		$contato['nasc'] = (isset($_POST['nasc'])) ?
-			$_POST['nasc'] : $contato['nasc'];
+	$contato['nome'] = (isset($_POST['nome'])) ? $_POST['nome'] : $contato['nome'];
+	$contato['telefone'] = (isset($_POST['telefone'])) ? $_POST['telefone'] : $contato['telefone'];
+	$contato['email'] = (isset($_POST['email'])) ? $_POST['email'] : $contato['email'];
+	$contato['descricao'] = (isset($_POST['descricao'])) ? $_POST['descricao'] : $contato['descricao'];
+	$contato['nasc'] = (isset($_POST['nasc'])) ? $_POST['nasc'] : $contato['nasc'];
 
 include "template.php";
 

@@ -31,18 +31,25 @@
 
         function gravar_contatos($conexao, $contato)
         {
+            $nome = $this->mysqli->escape_string($contato['nome']);
+            $telefone = $this->mysqli->escape_string($contato['telefone']);
+            $email = $this->mysqli->escape_string($contato['email']);
+            $descricao = $this->mysqli->escape_string($contato['descricao']);
+            $nasc = $this->mysqli->escape_string($contato['nasc']);
+            $favoritos = $this->mysqli->escape_string($contato['concluida']);
+
             $sqlGravar = "
             
             INSERT INTO contatos
                 (nome, telefone, email, descricao, nasc, concluida)
             VALUES
                 (
-                    '{$contato['nome']}',
-                    '{$contato['telefone']}',
-                    '{$contato['email']}',
-                    '{$contato['descricao']}',
-                    '{$contato['nasc']}',
-                    {$contato['concluida']}
+                    '{$nome}',
+                    '{$telefone}',
+                    '{$email}',
+                    '{$descricao}',
+                    '{$nasc}',
+                    {$favoritos}
                 )
             ";
             mysqli_query($conexao, $sqlGravar);

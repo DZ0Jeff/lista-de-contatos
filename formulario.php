@@ -18,7 +18,7 @@
 
 			<input type="text" 
 				name="nome"
-				value="<?php echo $contato['nome']; ?> " 
+				value="<?php $validator->special_str($contato['nome']); ?> " 
 			/>
 
 		</label>
@@ -33,7 +33,7 @@
 
 			<input type="text" 
 				name="telefone" 
-				value="<?php echo $contato['telefone'] ?>" 
+				value="<?php $validator->special_str($contato['telefone']); ?>" 
 			/>
 
 		</label>
@@ -48,7 +48,7 @@
 
 			<input type="text" 
 				name="email" 
-				value="<?php echo $contato['email'] ?>" 
+				value="<?php $validator->special_str($contato['email']); ?>" 
 			/>
 
 		</label>
@@ -56,7 +56,7 @@
 		<label>
 			<p>Descrição:</p>
 			<textarea name="descricao">
-				<?php echo $contato['descricao']; ?>
+				<?php $validator->special_str($contato['descricao']); ?>
 			</textarea>
 		</label>
 
